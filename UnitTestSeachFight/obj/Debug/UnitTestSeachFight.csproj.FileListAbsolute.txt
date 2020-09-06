@@ -1,0 +1,7 @@
+C:\Users\Gian\Desktop\console_apps\searchfight\UnitTestSeachFight\bin\Debug\UnitTestSeachFight.dll
+C:\Users\Gian\Desktop\console_apps\searchfight\UnitTestSeachFight\bin\Debug\UnitTestSeachFight.pdb
+C:\Users\Gian\Desktop\console_apps\searchfight\UnitTestSeachFight\bin\Debug\searchfight.exe
+C:\Users\Gian\Desktop\console_apps\searchfight\UnitTestSeachFight\bin\Debug\searchfight.pdb
+C:\Users\Gian\Desktop\console_apps\searchfight\UnitTestSeachFight\obj\Debug\UnitTestSeachFight.csprojResolveAssemblyReference.cache
+C:\Users\Gian\Desktop\console_apps\searchfight\UnitTestSeachFight\obj\Debug\UnitTestSeachFight.dll
+C:\Users\Gian\Desktop\console_apps\searchfight\UnitTestSeachFight\obj\Debug\UnitTestSeachFight.pdb

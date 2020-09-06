@@ -11,10 +11,10 @@ namespace searchfight
     {
         static void Main(string[] args)
         {
-            init(args);
+            Init(args);
         }
 
-        public static void init(string[] args)
+        public static void Init(string[] args)
         {
             List<string> lstLanguagesValidation = new List<String>();
             List<SearchResult> lstSearchResult = new List<SearchResult>();
@@ -25,8 +25,8 @@ namespace searchfight
                 Console.WriteLine(Utilities.BREAKER_SYMBOL);
                 Console.WriteLine("Programming Challenge\n");
                 Console.Write("\rLoading {0} de {1}", 0, lstLanguagesValidation.Count);
-                lstSearchResult = getSearchResult(lstLanguagesValidation);
-                showSearchResult(lstSearchResult);
+                lstSearchResult = GetSearchResult(lstLanguagesValidation);
+                ShowSearchResult(lstSearchResult);
 
             }
             else
@@ -35,7 +35,7 @@ namespace searchfight
             }
         }
 
-        public static void showSearchResult(List<SearchResult> lstSearchResult)
+        public static void ShowSearchResult(List<SearchResult> lstSearchResult)
         {
             Console.WriteLine("\n");
             var lstProgrammingLanguage = lstSearchResult.GroupBy(re => re.programmingLanguage);
@@ -44,9 +44,9 @@ namespace searchfight
             /*Find Total Winner*/
             var lstTotaResultByLanguages = lstProgrammingLanguage.Select(lst => new { programmingLanguage = lst.Key, searchResult = lst.Sum(sum => sum.searchResult) }).OrderByDescending(lst => lst.searchResult).ToList();
             /*Find Yahoo Winner*/
-            var lstYahooWinner = getMaxValueBySearchEngine(lstSearchResult, "Yahoo");
+            var lstYahooWinner = GetMaxValueBySearchEngine(lstSearchResult, "Yahoo");
             /*Find Bing Winner*/
-            var lstBingWinner = getMaxValueBySearchEngine(lstSearchResult, "Bing");
+            var lstBingWinner = GetMaxValueBySearchEngine(lstSearchResult, "Bing");
 
 
             /*Print General Results*/
@@ -102,7 +102,7 @@ namespace searchfight
 
         }
 
-        public static List<SearchResult> getSearchResult(List<String> lstLanguages)
+        public static List<SearchResult> GetSearchResult(List<String> lstLanguages)
         {
 
             List<SearchResult> lstSearchResult = new List<SearchResult>();
@@ -115,13 +115,13 @@ namespace searchfight
                 entitySearchResult = new SearchResult();
                 entitySearchResult.programmingLanguage = lstLanguages[j];
                 entitySearchResult.searchEngine = "Bing";
-                entitySearchResult.searchResult = getHttpResponse(lstLanguages[j], Utilities.URI_BING, Utilities.REGX_BING);
+                entitySearchResult.searchResult = GetHttpResponse(lstLanguages[j], Utilities.URI_BING, Utilities.REGX_BING);
                 lstSearchResult.Add(entitySearchResult);
 
                 entitySearchResult = new SearchResult();
                 entitySearchResult.programmingLanguage = lstLanguages[j];
                 entitySearchResult.searchEngine = "Yahoo";
-                entitySearchResult.searchResult = getHttpResponse(lstLanguages[j], Utilities.URI_YAHOO, Utilities.REGX_YAHOO);
+                entitySearchResult.searchResult = GetHttpResponse(lstLanguages[j], Utilities.URI_YAHOO, Utilities.REGX_YAHOO);
                 lstSearchResult.Add(entitySearchResult);
 
                 Console.Write("\rLoading {0} de {1}", j + 1, lstLanguages.Count);
@@ -131,16 +131,16 @@ namespace searchfight
 
         }
 
-        public static long getHttpResponse(string language, string uri, string regx)
+        public static long GetHttpResponse(string language, string uri, string regx)
         {
 
             long response = 0;
-            var uriBuilder = new UriBuilder(String.Format(uri + "{0}", language));
-            var responseHtml = Utilities.getHttpBody(uriBuilder).Result;
+
+            var responseHtml = Utilities.GetHttpBody(uri, language).Result;
 
             if (responseHtml != "")
             {
-                response = getValueFromSearch(responseHtml, regx);
+                response = GetValueFromSearch(responseHtml, regx);
             }
 
             return response;
@@ -148,7 +148,7 @@ namespace searchfight
 
         }
 
-        public static long getValueFromSearch(string responseHtml, string regx)
+        public static long GetValueFromSearch(string responseHtml, string regx)
         {
 
             long response = 0;
@@ -163,7 +163,7 @@ namespace searchfight
 
         }
 
-        public static List<SearchResult> getMaxValueBySearchEngine(List<SearchResult> lstSearchResult, string searchEngine)
+        public static List<SearchResult> GetMaxValueBySearchEngine(List<SearchResult> lstSearchResult, string searchEngine)
         {
             var maxSearchValue = lstSearchResult.Where(a => a.searchEngine == searchEngine).Max(max => max.searchResult);
             var response = lstSearchResult.Where(a => a.searchEngine == searchEngine && a.searchResult == maxSearchValue).ToList();
