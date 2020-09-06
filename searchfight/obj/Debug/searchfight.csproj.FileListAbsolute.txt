@@ -1,0 +1,9 @@
+C:\Users\Gian\Desktop\test_03092020\searchfight\searchfight\bin\Debug\searchfight.exe.config
+C:\Users\Gian\Desktop\test_03092020\searchfight\searchfight\bin\Debug\searchfight.exe
+C:\Users\Gian\Desktop\test_03092020\searchfight\searchfight\bin\Debug\searchfight.pdb
+C:\Users\Gian\Desktop\test_03092020\searchfight\searchfight\obj\Debug\searchfight.csprojResolveAssemblyReference.cache
+C:\Users\Gian\Desktop\test_03092020\searchfight\searchfight\obj\Debug\searchfight.exe
+C:\Users\Gian\Desktop\test_03092020\searchfight\searchfight\obj\Debug\searchfight.pdb
+C:\Users\Gian\Desktop\console_apps\searchfight\searchfight\bin\Debug\searchfight.exe.config
+C:\Users\Gian\Desktop\console_apps\searchfight\searchfight\obj\Debug\searchfight.exe
+C:\Users\Gian\Desktop\console_apps\searchfight\searchfight\obj\Debug\searchfight.pdb
