@@ -23,15 +23,27 @@ namespace searchfight
         public static int timeOut = 5;  /*Http Timeout in seconds*/
 
 
-        public static async Task<string> getHttpBody(UriBuilder script)
+        public static async Task<string> GetHttpBody(string uri, string language)
         {
             var response = "";
+            UriBuilder uriBuilder = new UriBuilder();
+            try
+            {
+                uriBuilder = new UriBuilder(String.Format(uri + "{0}", language));
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("\nError making Uri: " + ex.Message);
+            }
+
             using (var httpClient = new HttpClient())
             {
                 try
                 {
                     httpClient.Timeout = TimeSpan.FromSeconds(timeOut);
-                    response =  await httpClient.GetStringAsync(script.Uri);
+                    response = await httpClient.GetStringAsync(uriBuilder.Uri);
 
                 }
                 catch (Exception ex)
@@ -87,7 +99,7 @@ namespace searchfight
                 {
                     if (!inparameter.Trim().Equals(""))
                     {
-                        lstlanguages.Add(inparameter);
+                        lstlanguages.Add(inparameter.ToUpper());
                     }
                 }
 
